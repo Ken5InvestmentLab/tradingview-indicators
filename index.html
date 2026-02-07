@@ -282,6 +282,39 @@
     section { padding: 60px 0; }
     .card { padding: 20px; }
   }
+  /* ターミナル風リンクのカスタマイズ */
+  .terminal-link {
+    display: inline-block;
+    color: var(--secondary);
+    text-decoration: none;
+    font-family: var(--font-head);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .terminal-link:hover {
+    color: #fff !important;
+    text-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
+    transform: translateX(10px); /* 右に少しスライド */
+  }
+
+  /* ホバー時に先頭の ">" だけを光らせる演出 */
+  .terminal-link::before {
+    content: "";
+    position: absolute;
+    left: -15px;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .terminal-link:hover::before {
+    opacity: 1;
+    left: -5px;
+  }
 </style>
 </head>
 
@@ -313,8 +346,11 @@
       The Cyberpunk Series is the visual core of our infrastructure —<br>
       your primary entry point for <strong>unbiased market structural analysis.</strong>
     </p>
-    <p style="font-family: var(--font-head); color: var(--secondary); letter-spacing: 1px; font-size: 0.9rem;">
-      &gt; Initialize your terminal. Start here.
+      <div style="margin-top: 20px;">
+      <a href="https://discord.gg/JNQEbP5gKE" class="terminal-link">
+        > Initialize your terminal. Start here.
+      </a>
+    </div>
     </p>
   </div>
 </section>
@@ -403,3 +439,4 @@
 
 </body>
 </html>
+

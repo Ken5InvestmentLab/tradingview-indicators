@@ -203,6 +203,25 @@
     width: 100%;
   }
 
+  .terminal-link {
+    display: inline-block;
+    color: var(--secondary);
+    text-decoration: none;
+    font-family: var(--font-head);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .terminal-link:hover {
+    color: #fff !important;
+    text-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
+    transform: translateX(10px);
+  }
+
   footer {
     margin-top: 80px;
     padding: 60px 20px 40px;
@@ -279,97 +298,17 @@
 
   /* --- モバイル表示の最適化 --- */
   @media (max-width: 600px) {
-    /* 全体の余白を調整して画面を広く使う */
-    section { 
-      padding: 40px 0; 
-    }
-    
-    .container {
-      padding: 0 15px;
-    }
-
-    /* タイトルのサイズをスマホに最適化 */
-    h1 { 
-      font-size: 2.0rem; 
-      line-height: 1.2;
-      margin: 20px 0;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-    }
-
-    /* カード内のパディングを少し削り、文字を読みやすくする */
-    .card { 
-      padding: 25px 15px; 
-      margin: 20px auto;
-    }
-
-    /* ヒーロー画像の高さをスマホで見やすいバランスに */
-    .hero-img-container img {
-      max-height: 300px;
-    }
-
-    /* リスト（►）をスマホでは少し左に寄せて中央揃えっぽく見せる */
-    .feature-list {
-      display: block;
-      width: fit-content;
-      margin: 10px auto;
-      font-size: 0.9rem;
-    }
-
-    /* ボタン（CTA）を押しやすく大きくする */
-    .cta a {
-      width: 80%; /* 画面幅に合わせて広げる */
-      padding: 18px 20px;
-      font-size: 0.9rem;
-    }
-
-    /* ターミナルリンクがスマホで横に飛び出さないように調整 */
-    .terminal-link:hover {
-      transform: translateX(5px); /* スマホでは控えめにスライド */
-    }
-    
-    /* フッターの文字サイズ調整 */
-    .footer-logo {
-      font-size: 1.2rem;
-    }
-    .copyright {
-      font-size: 0.7rem;
-    }
-  }
-  /* ターミナル風リンクのカスタマイズ */
-  .terminal-link {
-    display: inline-block;
-    color: var(--secondary);
-    text-decoration: none;
-    font-family: var(--font-head);
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-    position: relative;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-
-  .terminal-link:hover {
-    color: #fff !important;
-    text-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
-    transform: translateX(10px); /* 右に少しスライド */
-  }
-
-  /* ホバー時に先頭の ">" だけを光らせる演出 */
-  .terminal-link::before {
-    content: "";
-    position: absolute;
-    left: -15px;
-    opacity: 0;
-    transition: all 0.3s ease;
-  }
-
-  .terminal-link:hover::before {
-    opacity: 1;
-    left: -5px;
+    section { padding: 40px 0; }
+    .container { padding: 0 15px; }
+    h1 { font-size: 2.0rem; line-height: 1.2; margin: 20px 0; }
+    h2 { font-size: 1.5rem; }
+    .card { padding: 25px 15px; margin: 20px auto; }
+    .hero-img-container img { max-height: 300px; }
+    .feature-list { display: block; width: fit-content; margin: 10px auto; font-size: 0.9rem; }
+    .cta a { width: 80%; padding: 18px 20px; font-size: 0.9rem; }
+    .terminal-link:hover { transform: translateX(5px); }
+    .footer-logo { font-size: 1.2rem; }
+    .copyright { font-size: 0.7rem; }
   }
 </style>
 </head>
@@ -402,12 +341,11 @@
       The Cyberpunk Series is the visual core of our infrastructure —<br>
       your primary entry point for <strong>unbiased market structural analysis.</strong>
     </p>
-      <div style="margin-top: 20px;">
+    <div style="margin-top: 20px;">
       <a href="https://discord.gg/JNQEbP5gKE" class="terminal-link">
         > Initialize your terminal. Start here.
       </a>
     </div>
-    </p>
   </div>
 </section>
 
@@ -495,5 +433,3 @@
 
 </body>
 </html>
-
-

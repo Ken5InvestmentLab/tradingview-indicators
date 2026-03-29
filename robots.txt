@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ken5investmentlab.github.io/cyberpunk-trade-os/sitemap.xml

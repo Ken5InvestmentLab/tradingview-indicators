@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyberpunk Trade OS | Ken5 Investment Lab</title>
+
+<!-- SEO Meta -->
+<meta name="description" content="Cyberpunk Trade OS is a structured TradingView indicator system built to eliminate hesitation. FVN + SVSI with HUD interface. Free Discord community included.">
+<meta name="keywords" content="TradingView indicator, trading system, FVN indicator, SVSI indicator, Pine Script, cyberpunk trading, structured trading, trading workflow, reduce trading hesitation">
+<meta name="author" content="Ken5 Investment Lab">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ken5investmentlab.github.io/cyberpunk-trade-os/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ken5investmentlab.github.io/cyberpunk-trade-os/">
+<meta property="og:title" content="Cyberpunk Trade OS | Ken5 Investment Lab">
+<meta property="og:description" content="Redefining TradingView through cyberpunk design. Not just indicators — a structured decision environment built to reduce hesitation.">
+<meta property="og:image" content="https://lh3.googleusercontent.com/d/17t-XCsrPCbpLXp9JJoCHKRnIUzdESZUF">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Ken5 Investment Lab">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ken5investlab">
+<meta name="twitter:creator" content="@ken5investlab">
+<meta name="twitter:title" content="Cyberpunk Trade OS | Ken5 Investment Lab">
+<meta name="twitter:description" content="Redefining TradingView through cyberpunk design. Not just indicators — a structured decision environment built to reduce hesitation.">
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/d/17t-XCsrPCbpLXp9JJoCHKRnIUzdESZUF">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://ken5investmentlab.github.io/cyberpunk-trade-os/",
+      "url": "https://ken5investmentlab.github.io/cyberpunk-trade-os/",
+      "name": "Cyberpunk Trade OS | Ken5 Investment Lab",
+      "description": "A structured TradingView indicator system built to eliminate hesitation. FVN + SVSI with HUD interface.",
+      "inLanguage": "en",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ken5 Investment Lab",
+        "url": "https://ken5investmentlab.github.io/cyberpunk-trade-os/",
+        "sameAs": [
+          "https://x.com/ken5investlab",
+          "https://discord.gg/JNQEbP5gKE"
+        ]
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Cyberpunk Trade OS",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "TradingView",
+      "description": "A structured TradingView indicator system (FVN + SVSI) with HUD interface designed to eliminate trading hesitation through structured decision-making.",
+      "url": "https://ken5investmentlab.github.io/cyberpunk-trade-os/",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free Discord Access",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Lite Membership",
+          "url": "https://whop.com/ken5-investment-lab/cyberpunk-trade-os-lite/"
+        },
+        {
+          "@type": "Offer",
+          "name": "Full Access",
+          "url": "https://whop.com/ken5-investment-lab/cyberpunk-trade-os-full/"
+        }
+      ],
+      "creator": {
+        "@type": "Person",
+        "name": "Ken5",
+        "url": "https://x.com/ken5investlab"
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg-dark: #050505;
+    --bg-panel: rgba(20, 25, 40, 0.7);
+
+    --primary: #00f3ff;            
+    --discord: #5865F2;               
+    --membership: #bd00ff;            
+
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+
+    --font-head: 'Orbitron', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 200%; height: 200%;
+    background-image:
+      linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+    animation: gridMove 20s linear infinite;
+    z-index: -2;
+    pointer-events: none;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, var(--bg-dark) 90%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  @keyframes gridMove {
+    0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
+    100% { transform: perspective(500px) rotateX(60deg) translateY(40px) translateZ(-200px); }
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-head);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  h1 {
+    font-size: clamp(2.3rem, 6vw, 4.2rem);
+    background: linear-gradient(90deg, #fff, var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+    margin: 40px 0 16px 0;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    border-left: 4px solid var(--membership);
+    padding-left: 15px;
+    margin-bottom: 26px;
+    text-align: center;
+  }
+
+  p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 820px;
+    margin: 0 auto 1.2rem auto;
+    text-align: center;
+  }
+
+  strong {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  section {
+    padding: 80px 0;
+    text-align: center;
+  }
+
+  .card {
+    background: var(--bg-panel);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 40px;
+    margin: 40px auto;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 243, 255, 0.1);
+    border-color: rgba(0, 243, 255, 0.25);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 18px 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  img:hover {
+    box-shadow: 0 0 30px var(--primary);
+    border-color: var(--primary);
+  }
+
+  .hero-img-container {
+    width: 100%;
+    margin-bottom: 18px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .hero-img-container img {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
+    margin: 0;
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 40px rgba(0, 243, 255, 0.2);
+  }
+
+  .cta {
+    margin-top: 26px;
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Default button = Discord style (blurple) */
+  .cta a {
+    position: relative;
+    display: inline-block;
+    padding: 16px 34px;
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden;
+    background: linear-gradient(90deg, transparent, rgba(88, 101, 242, 0.22), transparent);
+    background-size: 200% 100%;
+    border: 1px solid var(--discord);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    z-index: 1;
+  }
+
+  .cta a::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 0%; height: 100%;
+    background: var(--discord);
+    z-index: -1;
+    transition: width 0.3s ease;
+  }
+
+  .cta a:hover {
+    box-shadow: 0 0 30px rgba(88, 101, 242, 0.6);
+    border-color: #7289da;
+    text-shadow: 0 0 5px #fff;
+  }
+
+  .cta a:hover::before { width: 100%; }
+
+  /* Membership buttons = red-ish accent */
+  .cta a.membership {
+    border-color: var(--membership);
+    background: linear-gradient(90deg, transparent, rgba(255, 45, 111, 0.20), transparent);
+  }
+  .cta a.membership::before { background: var(--membership); }
+  .cta a.membership:hover {
+    box-shadow: 0 0 30px rgba(255, 45, 111, 0.45);
+    border-color: rgba(255, 45, 111, 0.85);
+  }
+
+  /* Terminal links:
+     - Default = membership red (for Lite/Full/Genesis links)
+     - Use .discord-link for Discord blurple (Not sure? etc.)
+  */
+  .terminal-link {
+    display: inline-block;
+    color: var(--membership);
+    text-decoration: none;
+    font-family: var(--font-head);
+    font-size: 0.92rem;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .terminal-link:hover {
+    color: #fff !important;
+    text-shadow: 0 0 10px var(--membership), 0 0 20px var(--membership);
+    transform: translateX(10px);
+  }
+
+  .terminal-link.discord-link {
+    color: var(--discord);
+  }
+  .terminal-link.discord-link:hover {
+    text-shadow: 0 0 10px var(--discord), 0 0 20px var(--discord);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-top: 18px;
+    text-align: left;
+  }
+
+  .feature-list { margin-top: 12px; color: var(--text-muted); }
+  .feature-list div { margin: 8px 0; }
+  .feature-list span { color: var(--primary); margin-right: 8px; }
+
+  .note {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    text-align: left;
+  }
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  footer {
+    margin-top: 80px;
+    padding: 60px 20px 40px;
+    background: rgba(0,0,0,0.8);
+    border-top: 1px solid rgba(0, 243, 255, 0.2);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .footer-content {
+    max-width: 650px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .footer-logo {
+    font-family: var(--font-head);
+    font-size: 1.5rem;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 700;
+  }
+
+  .footer-contact a {
+    font-family: var(--font-head);
+    font-size: 1rem;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .footer-contact a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px var(--primary);
+    border-bottom: 1px solid var(--primary);
+  }
+
+  .copyright {
+    width: 100%;
+    text-align: center;
+    margin-top: 34px;
+    font-size: 0.75rem;
+    color: #555;
+    padding-top: 18px;
+  }
+
+  @media (max-width: 820px) { .grid-2 { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) {
+    section { padding: 42px 0; }
+    .container { padding: 0 15px; }
+    h1 { font-size: 2.0rem; line-height: 1.2; margin: 20px 0; }
+    h2 { font-size: 1.45rem; }
+    .card { padding: 24px 16px; margin: 20px auto; }
+    .hero-img-container img { max-height: 300px; }
+    p { font-size: 1rem; }
+    .cta a { width: 88%; padding: 16px 18px; font-size: 0.9rem; }
+    .terminal-link:hover { transform: translateX(5px); }
+    .footer-logo { font-size: 1.2rem; }
+    .copyright { font-size: 0.7rem; }
+  }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<!-- HERO -->
+<section class="reveal">
+  <div class="hero-img-container">
+    <img src="https://lh3.googleusercontent.com/d/17t-XCsrPCbpLXp9JJoCHKRnIUzdESZUF" alt="Ken5 Investment Lab Header">
+  </div>
+
+  <h1>Cyberpunk Trade OS</h1>
+
+  <p>
+    <span style="color: var(--primary); font-weight: 600;">
+      Redefining TradingView through cyberpunk design.
+    </span><br><br>
+    Not just indicators — a structured decision environment built to reduce hesitation.<br>
+    <span style="color: var(--primary);">The details live inside the Lab.</span>
+  </p>
+
+  <div class="cta">
+    <a href="https://discord.gg/JNQEbP5gKE">Join the Discord (Free)</a>
+    <a href="#membership" class="membership">Membership (Optional)</a>
+  </div>
+
+  <div style="margin-top: 10px;">
+    <a href="https://discord.gg/JNQEbP5gKE" class="terminal-link discord-link">> Explore the Core inside Discord</a>
+  </div>
+</section>
+
+<!-- WHAT IT SOLVES -->
+<section class="reveal">
+  <div class="card">
+    <h2>What This OS Solves</h2>
+    <p>
+      Most traders don't lack indicators. They lack <strong>clarity</strong>.<br>
+      They hesitate. They second-guess. They chase noise.<br><br>
+      Cyberpunk Trade OS exists to bring structure back into the decision process.
+    </p>
+
+    <!-- Changed to lh3.googleusercontent.com/d/<ID> format -->
+    <img
+      src="https://lh3.googleusercontent.com/d/19zJ-ToQ51hLMeb6iZbrGRwmv8w-9v2nM"
+      alt="Cyberpunk Trade OS concept"
+    >
+
+    <p style="margin-top: 10px;">
+      The fastest way to understand the OS is to see it used in context — inside Discord.
+    </p>
+
+    <div class="cta" style="margin-top: 18px;">
+      <a href="https://discord.gg/JNQEbP5gKE">Enter the Lab</a>
+    </div>
+  </div>
+</section>
+
+<!-- BRIDGE SECTION: HOW IT'S USED -->
+<section class="reveal">
+  <div class="card">
+    <h2>How Traders Use the OS</h2>
+    <p>
+      This is not blind signal chasing.<br>
+      It's a workflow for reading structure, building positions with discipline, and reducing hesitation during execution.
+    </p>
+
+    <img
+      src="https://lh3.googleusercontent.com/d/17knXZz6d2Ym79KF7Up6QOZWTqCfI5j42"
+      alt="Cyberpunk trading workflow illustration"
+    >
+
+    <div class="grid-2">
+      <div class="card" style="margin:0; padding:22px;">
+        <h3 style="margin:0 0 8px 0;">Step 1 // Read Structure</h3>
+        <div class="feature-list">
+          <div><span>►</span> Identify discounted / extended zones (FVN)</div>
+          <div><span>►</span> Validate momentum pressure (SVSI)</div>
+          <div><span>►</span> Reduce emotional entries with structured signals</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin:0; padding:22px;">
+        <h3 style="margin:0 0 8px 0;">Step 2 // Operate with Context</h3>
+        <div class="feature-list">
+          <div><span>►</span> Confirmation stack + structured access (Full)</div>
+          <div><span>►</span> Real-time alerts where available (FVN)</div>
+          <div><span>►</span> Build repeatable, rule-based execution habits</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 18px;">
+      Inside Discord, you'll find real examples, module walkthroughs, and a structured Q&A flow.
+    </p>
+
+    <div class="cta" style="margin-top: 22px;">
+      <a href="https://discord.gg/JNQEbP5gKE">See Live Examples in Discord</a>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section class="reveal" id="membership">
+  <div class="card">
+    <h2>Membership (Optional)</h2>
+    <p>
+      You can explore the Lab for free.<br>
+      Membership simply unlocks deeper operating depth.
+    </p>
+
+    <div class="grid-2">
+
+      <!-- LITE -->
+      <div class="card" style="margin: 0; padding: 26px;">
+        <h3>🟣 Lite</h3>
+        <p style="text-align:left; margin: 0 0 6px 0;">
+          Built for traders who want structure without automation.
+        </p>
+        <p style="text-align:left; font-size:0.95rem; color: var(--text-muted); margin: 0 0 12px 0;">
+          Best for: TradingView free users and manual structure readers.
+        </p>
+
+        <div class="feature-list">
+          <div><span>►</span> FVN Lite (no HUD)</div>
+          <div><span>►</span> SVSI Lite (no HUD)</div>
+          <div><span>►</span> Manual structure reading</div>
+          <div><span>►</span> No alerts / fixed parameters</div>
+        </div>
+
+        <div style="margin-top:18px;">
+          <a href="https://www.tradingview.com/script/JrdjvXA4-Cyberpunk-Fundamental-Value-Nexus-Lite/" class="terminal-link">
+            &gt; View FVN Lite on TradingView
+          </a><br>
+          <a href="https://www.tradingview.com/script/ENrpaabm-Cyberpunk-Smooth-Volume-Strength-Index-Lite/" class="terminal-link">
+            &gt; View SVSI Lite on TradingView
+          </a>
+        </div>
+
+        <div class="cta" style="justify-content:flex-start; margin-top: 18px;">
+          <a class="membership" href="https://whop.com/ken5-investment-lab/cyberpunk-trade-os-lite/">Get Lite</a>
+        </div>
+      </div>
+
+      <!-- FULL -->
+      <div class="card" style="margin: 0; padding: 26px; border-color: rgba(255,45,111,0.25);">
+        <h3>🔥 Full Access</h3>
+        <p style="text-align:left; margin: 0 0 6px 0;">
+          Built for traders who want a fully integrated operating environment.
+        </p>
+        <p style="text-align:left; font-size:0.95rem; color: var(--text-muted); margin: 0 0 12px 0;">
+          Best for: Active traders who want confirmation, structured access, and OS expansion.
+        </p>
+
+        <div class="feature-list">
+          <div><span>►</span> FVN (Full) + SVSI (Full)</div>
+          <div><span>►</span> Real-time alerts (FVN)</div>
+          <div><span>►</span> HUD interface</div>
+          <div><span>►</span> Indicator breakdown sessions (including free modules)</div>
+          <div><span>►</span> Direct Q&A access</div>
+          <div><span>►</span> Access to all future premium modules</div>
+        </div>
+
+        <div style="margin-top:18px;">
+          <a href="https://jp.tradingview.com/script/OLZFRXzU/" class="terminal-link">
+            &gt; View FVN on TradingView
+          </a><br>
+          <a href="https://jp.tradingview.com/script/uG5SX42X/" class="terminal-link">
+            &gt; View SVSI on TradingView
+          </a>
+        </div>
+
+        <div class="cta" style="justify-content:flex-start; margin-top: 18px;">
+          <a class="membership" href="https://whop.com/ken5-investment-lab/cyberpunk-trade-os-full/">Start Full (7-Day Trial)</a>
+        </div>
+
+        <p class="note" style="margin-top: 10px;">
+          Trial converts to paid subscription unless cancelled before day 7.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- GENESIS -->
+    <div class="card reveal" style="margin-top: 26px; border-color: rgba(0,243,255,0.18); text-align:left;">
+      <h3 style="text-align:left; margin-top: 0;">🚀 Genesis Access</h3>
+      <p style="text-align:left; margin: 0 0 6px 0;">
+        Genesis is Full Access at an early supporter rate — and it will close in the future.
+      </p>
+      <p style="text-align:left; font-size:0.95rem; color: var(--text-muted); margin: 0 0 12px 0;">
+        Best for: Early adopters who want the Full environment at the best possible rate.
+      </p>
+
+      <div class="feature-list">
+        <div><span>►</span> Everything in Full Access</div>
+        <div><span>►</span> Early supporter pricing (best value)</div>
+        <div><span>►</span> Limited-time availability</div>
+        <div><span>►</span> 7-Day Trial available</div>
+      </div>
+
+      <div class="cta" style="justify-content:flex-start; margin-top: 18px;">
+        <a class="membership" href="https://whop.com/ken5-investment-lab/cyberpunk-trade-os-genesis/">Start Genesis (7-Day Trial)</a>
+      </div>
+
+      <p class="note">
+        Genesis will close when the next premium module is released.
+      </p>
+    </div>
+
+    <!-- Not sure? should be Discord blurple -->
+    <div style="margin-top: 26px;">
+      <a href="https://discord.gg/JNQEbP5gKE" class="terminal-link discord-link">> Not sure? Explore the Discord first</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- LATEST FROM THE LAB -->
+<section class="reveal" id="blog">
+  <h2 style="border-left: 4px solid var(--primary); padding-left: 15px; text-align:left;">Latest from the Lab</h2>
+  <p style="text-align:left; margin-bottom: 32px;">Structured thinking for serious traders.</p>
+
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+
+    <a href="blog/trading-geopolitical-volatility/index.html" style="text-decoration:none; display:flex; flex-direction:column;">
+      <div class="card" style="margin:0; padding:28px; flex:1; display:flex; flex-direction:column; gap:12px; cursor:pointer;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-family:var(--font-head); font-size:0.6rem; letter-spacing:2px; color:var(--primary); border:1px solid rgba(0,243,255,0.3); padding:3px 8px; border-radius:4px;">MACRO</span>
+          <span style="font-size:0.8rem; color:var(--text-muted);">7 min read</span>
+        </div>
+        <h3 style="margin:0; font-size:0.95rem; line-height:1.45; color:#fff; text-transform:uppercase; letter-spacing:1px;">When Geopolitical Shock Hits the Market: A Structural Trader's Playbook</h3>
+        <p style="margin:0; font-size:0.9rem; color:var(--text-muted); line-height:1.6; flex:1;">When conflict escalates and markets go haywire, most traders make the same two mistakes. Here's how structural traders think differently.</p>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:auto;">
+          <time datetime="2026-03-30T00:00:00Z" style="font-size:0.78rem; color:var(--text-muted);">2026-03-30 00:00 UTC</time>
+          <span style="font-family:var(--font-head); font-size:0.72rem; letter-spacing:1px; color:var(--primary);">Read →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="blog/paul-tudor-jones-5-to-1-rule/index.html" style="text-decoration:none; display:flex; flex-direction:column;">
+      <div class="card" style="margin:0; padding:28px; flex:1; display:flex; flex-direction:column; gap:12px; cursor:pointer;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-family:var(--font-head); font-size:0.6rem; letter-spacing:2px; color:var(--primary); border:1px solid rgba(0,243,255,0.3); padding:3px 8px; border-radius:4px;">PHILOSOPHY</span>
+          <span style="font-size:0.8rem; color:var(--text-muted);">6 min read</span>
+        </div>
+        <h3 style="margin:0; font-size:0.95rem; line-height:1.45; color:#fff; text-transform:uppercase; letter-spacing:1px;">What Paul Tudor Jones' 5:1 Rule Actually Demands From Your Setup</h3>
+        <p style="margin:0; font-size:0.9rem; color:var(--text-muted); line-height:1.6; flex:1;">PTJ's rule is famous. What nobody explains is the structural prerequisite that makes it calculable — before you enter.</p>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:auto;">
+          <time datetime="2026-03-29T00:00:00Z" style="font-size:0.78rem; color:var(--text-muted);">2026-03-29 00:00 UTC</time>
+          <span style="font-family:var(--font-head); font-size:0.72rem; letter-spacing:1px; color:var(--primary);">Read →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="blog/how-to-stop-hesitating-when-trading/index.html" style="text-decoration:none; display:flex; flex-direction:column;">
+      <div class="card" style="margin:0; padding:28px; flex:1; display:flex; flex-direction:column; gap:12px; cursor:pointer;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-family:var(--font-head); font-size:0.6rem; letter-spacing:2px; color:var(--primary); border:1px solid rgba(0,243,255,0.3); padding:3px 8px; border-radius:4px;">MINDSET</span>
+          <span style="font-size:0.8rem; color:var(--text-muted);">5 min read</span>
+        </div>
+        <h3 style="margin:0; font-size:0.95rem; line-height:1.45; color:#fff; text-transform:uppercase; letter-spacing:1px;">How to Stop Hesitating When Trading: It's Not a Mindset Problem</h3>
+        <p style="margin:0; font-size:0.9rem; color:var(--text-muted); line-height:1.6; flex:1;">Most traders don't lack information. They lack a system that removes the decision from the moment.</p>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:auto;">
+          <time datetime="2026-03-29T00:00:00Z" style="font-size:0.78rem; color:var(--text-muted);">2026-03-29 00:00 UTC</time>
+          <span style="font-family:var(--font-head); font-size:0.72rem; letter-spacing:1px; color:var(--primary);">Read →</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <div style="text-align:right; margin-top:20px;">
+    <a href="blog/index.html" style="font-family:var(--font-head); font-size:0.8rem; letter-spacing:2px; color:#00f3ff; text-decoration:none; text-transform:uppercase; transition:color 0.3s ease, text-shadow 0.3s ease, border-color 0.3s ease; display:inline-flex; align-items:center; gap:6px; border-bottom:1px solid transparent; padding-bottom:2px;" onmouseover="this.style.textShadow='0 0 10px #00f3ff';this.style.borderBottomColor='#00f3ff'" onmouseout="this.style.textShadow='none';this.style.borderBottomColor='transparent'">View All Articles →</a>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="reveal">
+  <div class="card" style="border-color: rgba(255,45,111,0.18);">
+    <h2 style="color: var(--membership);">The Lab Community</h2>
+    <img src="https://lh3.googleusercontent.com/d/13CwmWfvKtDxVTXelERZrt788JLwPzSgr" alt="Discord Community">
+    <p>
+      Zero hype. Pure structure.<br>
+      Join the free Discord to explore the OS, see examples, and ask questions.
+    </p>
+
+    <div class="cta">
+      <a href="https://discord.gg/JNQEbP5gKE">Join the Discord (Free)</a>
+      <a href="#membership" class="membership">Membership (Optional)</a>
+    </div>
+
+    <p style="margin-top: 14px; font-size: 0.95rem;">
+      Questions? Feel free to post anytime in the server — all languages are welcome.
+    </p>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-logo">KEN5 INVESTMENT LAB</div>
+
+    <div class="footer-contact">
+      <a href="https://x.com/ken5investlab" target="_blank" rel="noopener noreferrer">X // CONTACT</a>
+    </div>
+
+    <div class="copyright">© 2026 Ken5 Investment Lab All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealOnScroll = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add('active');
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+  revealElements.forEach((el) => revealOnScroll.observe(el));
+
+  // bfcache（ブラウザ戻るボタン）で戻った際にrevealを再発火する
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) {
+      revealElements.forEach((el) => revealOnScroll.observe(el));
+    }
+  });
+</script>
+
+</body>
+</html>
